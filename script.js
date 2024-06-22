@@ -16,7 +16,8 @@ function createGrid(size) {
     const divs = container.querySelectorAll("div");
     divs.forEach((div) => {
         div.addEventListener("mouseover", () => {
-            div.style.backgroundColor = "black";
+            let randomColor = Math.floor(Math.random()*16777215).toString(16);
+            div.style.backgroundColor = `#${randomColor}`;
         });
     });
 }
