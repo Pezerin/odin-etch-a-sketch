@@ -18,8 +18,8 @@ h1 {
 
 .container div {
     border: 1px solid black;
-    width: 58px;
-    height: 58px;
+    width: 60px;
+    height: 60px;
     box-sizing: border-box;
 }
 

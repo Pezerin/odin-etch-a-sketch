@@ -1,19 +1,33 @@
 const container = document.querySelector(".container");
 const button = document.querySelector(".size");
 
-for (let i = 0; i < 16 * 16; i++) {
-    const div = document.createElement("div");
-    container.appendChild(div);
-}
+function createGrid(size) {
+    let height = 960.0 / size;
+    let width = 960.0 / size;
 
-const divs = document.querySelectorAll(".container div");
+    container.innerHTML = '';
 
-for (let i = 0; i < 16 * 16; i++) {
-    divs[i].addEventListener("mouseover", () => {
-        divs[i].setAttribute("style", "background-color: black;")
+    for (let i = 0; i < size * size; i++) {
+        const newdiv = document.createElement("div");
+        newdiv.setAttribute("style", `height: ${height}px; width: ${width}px; border: 1px solid black; box-sizing: border-box;`);
+        container.appendChild(newdiv);
+    }
+
+    const divs = container.querySelectorAll("div");
+    divs.forEach((div) => {
+        div.addEventListener("mouseover", () => {
+            div.style.backgroundColor = "black";
+        });
     });
 }
 
+createGrid(16);
+
 button.addEventListener("click", () => {
     const size = prompt("Size of board (1-100):");
+    if (size > 0 && size <= 100) {
+        createGrid(size);
+    } else {
+        alert("Please enter a number between 1 and 100.");
+    }
 });
